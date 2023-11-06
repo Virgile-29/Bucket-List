@@ -20,7 +20,6 @@ class WishRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Wish::class);
     }
-
 //    /**
 //     * @return Wish[] Returns an array of Wish objects
 //     */

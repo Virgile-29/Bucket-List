@@ -1,0 +1,25 @@
+
+.img-wrapper {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    margin: 12px;
+}
+
+.img-about {
+    height: 100%;
+    width: 100%;
+}
+
+hr {
+    border-top: 1px dashed #fe5f55;
+}
+
+li, ul {
+    text-decoration: none;
+}
+
+.article-aboutus {
+    margin-left: 12px;
+}

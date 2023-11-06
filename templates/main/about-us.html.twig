@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %}A propos{% endblock %}
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('style/layout.css') }}">
+            <link rel="stylesheet" href="{{ asset('style/about-us.css') }}">
+        {% endblock %}
+{% block body %}
+    <div class="aboutus-content">
+    {% for index, person in team %}
+        <article class="article-aboutus">
+            <h3>{{ person['firstname'] }} {{ person['lastname'] }} {% if person['firstname'] is same as('Fabien')  %}
+                    ❤️
+                {% endif %}
+            </h3>
+            <p>
+               Date de naissance : {{ person['dateOfBirth'] }}
+            </p>
+            <p>
+                Créateur de {{ person['creatorOf'] }}
+            </p>
+            <div class="img-wrapper">
+                <img class="img-about" src="{{ person['picture'] }}">
+            </div>
+            <p>
+                {{ person['description'] }}
+            </p>
+        </article>
+        <br>
+    {% if index < team|length-1 %}
+        <hr>
+    {% endif %}
+
+    {% endfor %}
+    </div>
+{% endblock %}

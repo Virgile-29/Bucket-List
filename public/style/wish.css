@@ -1,0 +1,45 @@
+.wish-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: #1f8ad3;
+}
+.wish-link:hover {
+    animation: change-color-wish 2s infinite;
+}
+
+.wish-item {
+    display: flex;
+    align-items: center;
+}
+
+.rm-rf {
+    margin-left: 12px;
+}
+
+button, input[type="submit"], input[type="reset"] {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+@keyframes change-color-wish {
+    0% {
+        color: #1f8ad3;
+    }
+    50% {
+        color: #ff253d;
+    }
+
+    80% {
+        color: #1f8ad3;
+    }
+}
+
+.subtitle {
+    align-self: center;
+    justify-self: center;
+}

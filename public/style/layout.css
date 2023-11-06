@@ -3,10 +3,43 @@
     src: url("../static/font/FiraCode-VariableFont_wght.ttf");
 }
 
+html {
+    min-height: 100vh;
+}
+
 body {
     font-family: "fira";
-    background: aquamarine;
+    margin: 0;
 }
+
+.content {
+    min-height: 60vh;
+    margin: 8px;
+
+}
+
+.footer {
+    background-color: #fe5f55;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 120px;
+}
+
+.trademark {
+    margin-left: 12px;
+}
+
+.header {
+    height: 100px;
+    background: #bdd5ea;
+}
+
+.title {
+    padding-left: 12px;
+}
+
 
 .container {
     display: flex;
@@ -14,13 +47,40 @@ body {
     align-items: center;
 }
 
-.title {
-    padding-left: 12px;
+.nav-menu {
+    background: #bdd5ea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 10vh;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 15vh;
+.nav-link-item {
+    display: flex;
+    margin: 8px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #ff253d;
+    opacity: 0.9;
+    transition: opacity 1s ease 0s;
+
+}
+
+.nav-link:hover {
+    animation: change-color 2s infinite;
+}
+
+
+@keyframes change-color {
+    0% {
+        color: blue;
+    }
+    50% {
+        color: white;
+    }
+    100% {
+        color: #ff253d;
+    }
 }

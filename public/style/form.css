@@ -1,0 +1,21 @@
+#wish {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-item {
+    display: flex;
+    justify-content: center;
+}
+
+.wish-submit {
+    background: #1f8ad3;
+    color: white;
+    border-style: outset;
+    border-color: #1f8ad3;
+    padding: 8px 8px ;
+    text-shadow: none;
+    border-radius: 4px;
+}

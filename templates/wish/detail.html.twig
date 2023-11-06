@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="content">
+    <h2>{{ detail.title }}</h2>
+    <h3>Crée par {{ detail.author }} le {{ detail.dateCreated|date('d/m/y') }}</h3>
+    <h4>Category : {{ detail.category.name ?? "Non classé"  }}</h4>
+    <p>{{ detail.description }}</p>
+</div>
+
+{% endblock %}
