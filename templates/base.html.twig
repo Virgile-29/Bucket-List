@@ -34,13 +34,23 @@
             <div class="nav-link-item">
                 <a class="nav-link" href="{{ path('wish_list') }}">🧞 Mes souhaits </a>
             </div>
+            {% if is_granted('ROLE_ADMIN') %}
             <div class="nav-link-item">
                 <a class="nav-link" href="{{ path('wishForm') }}">🙏 Make a wish </a>
             </div>
+            {% endif %}
             <div class="nav-link-item">
                 <a class="nav-link" href="{{ path('Aboutus') }}">ℹ️ À propos </a>
             </div>
-
+            {% if is_granted('IS_AUTHENTICATED') %}
+            <div class="nav-link-item">
+                <a href="{{ logout_path() }}" class="nav-link">🔌 Logout</a>
+            </div>
+                {% else %}
+                <div class="nav-link-item">
+                    <a href="{{ path('app_login') }}" class="nav-link">🔑 Login</a>
+                </div>
+            {% endif %}
         </div>
     {% endblock %}
     {%  block flashMessage %}

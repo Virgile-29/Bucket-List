@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Wish;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,6 +20,24 @@ class WishRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Wish::class);
+    }
+
+    public function findWithCategories(EntityManagerInterface $em): array {
+            return $this->createQueryBuilder('w')
+                ->where('w.isPublished = 1')
+                ->orderBy('w.dateCreated', 'DESC')
+                ->leftJoin('w.category', 'category')
+                ->addSelect('category')
+                ->getQuery()->getResult();
+
+
+//        $q = $this->createQueryBuilder('b')
+//            ->orderBy('b.title', 'ASC')
+//            ->leftJoin('b.category', 'category')
+//            ->addSelect('category')
+//            ->setMaxResults(5)
+//            ->setFirstResult(($page -1) * 5);
+//        return $q->getQuery()->getResult();
     }
 //    /**
 //     * @return Wish[] Returns an array of Wish objects

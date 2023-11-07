@@ -10,13 +10,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+
 #[Route('/wish')]
+#[IsGranted('ROLE_USER')]
 class WishController extends AbstractController
 {
     #[Route('/list', name: 'wish_list')]
-    public function list(WishRepository $wish): Response {
-        $list = $wish->findBy(["isPublished" => true], ["dateCreated" => "DESC"]);
+    public function list(WishRepository $wish, EntityManagerInterface $em): Response {
+        $list = $wish->findWithCategories($em);
         $sortedList = [];
+
         foreach ($list as $wishItem) {
             if(!isset($sortedList[$wishItem->getCategory()->getName()])) {
                 $sortedList[$wishItem->getCategory()->getName()] = [];
