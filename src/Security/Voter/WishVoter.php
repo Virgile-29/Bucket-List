@@ -8,8 +8,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 class WishVoter extends Voter
 {
-    public const EDIT = 'POST_EDIT';
-    public const VIEW = 'POST_VIEW';
+    public const EDIT = 'WISH_EDIT';
+    public const VIEW = 'WISH_VIEW';
+
+    public const DELETE = 'WISH_DELETE';
 
     protected function supports(string $attribute, mixed $subject): bool
     {
