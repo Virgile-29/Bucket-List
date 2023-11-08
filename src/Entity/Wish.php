@@ -2,9 +2,8 @@
 
 namespace App\Entity;
 
+use App\Entity\EntityListener\WishListener;
 use App\Repository\WishRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -12,6 +11,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 #[ORM\Entity(repositoryClass: WishRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 #[UniqueEntity(fields: ['author', 'title'], message: 'On ne peut pas faire 2 fois le même voeux sinon ca marche pas XDPTDR')]
+#[ORM\EntityListeners([WishListener::class])]
 class Wish
 {
     #[ORM\Id]
@@ -36,6 +36,9 @@ class Wish
 
     #[ORM\ManyToOne(inversedBy: 'wishes')]
     private ?Category $category = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
 
     public function __construct()
     {
@@ -116,6 +119,18 @@ class Wish
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

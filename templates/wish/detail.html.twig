@@ -6,6 +6,20 @@
     <h3>Crée par {{ detail.author }} le {{ detail.dateCreated|date('d/m/y') }}</h3>
     <h4>Category : {{ detail.category.name ?? "Non classé"  }}</h4>
     <p>{{ detail.description }}</p>
+    <img class="imgWish" src="{{ asset(upload_dir ~ detail.image) }}" alt="">
 </div>
+
+    <style>
+        .content {
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+        }
+
+        .imgWish {
+            width: 250px;
+            height: 250px;
+        }
+    </style>
 
 {% endblock %}
