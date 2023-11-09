@@ -16,5 +16,4 @@ class WishApiController extends AbstractController {
             ->getQuery()->getResult();
         return new Paginator($w);
     }
-
 }
